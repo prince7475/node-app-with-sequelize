@@ -4,16 +4,14 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const app = express();
 const PORT = process.env.PORT || 5000
+const db = require('./config/database')
 
 
-const Sequelize = require('sequelize');
+//Test DB
 
-// Option 1: Passing parameters separately
-// const sequelize = new Sequelize('database', 'username', 'password', {
-//   host: 'localhost',
-//   dialect: /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-// });
-
+db.authenticate()
+    .then(() => console.log('Database connected...'))
+    .catch(err => console.log('Error: ', err))
 
 app.get('/', (req,res) => res.send('index'))
 
