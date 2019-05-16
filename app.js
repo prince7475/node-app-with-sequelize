@@ -8,13 +8,15 @@ const db = require('./config/database')
 
 
 //Test DB
-
 db.authenticate()
     .then(() => console.log('Database connected...'))
     .catch(err => console.log('Error: ', err))
 
-app.get('/', (req,res) => res.send('index'))
+    app.get('/', (req,res) => res.send('index'))
 
+
+//Gig routes 
+app.use('/gigs', require('./routes/gigs'))
 
 
 
